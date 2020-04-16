@@ -2,13 +2,9 @@
 
 #endif
 
-#ifdef KINESIS_WORK
+#ifdef KINESIS
 #  define SWAP_ENTER_DELETE
 #  define KINESIS_LAYOUT
-#endif
-
-#ifdef KINESIS_HOME
-#  define SWAP_ENTER_DELETE
 #endif
 
 xkb_keymap {

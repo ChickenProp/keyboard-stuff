@@ -1,12 +1,3 @@
-#ifdef WORK_LAPTOP
-
-#endif
-
-#ifdef KINESIS
-#  define SWAP_ENTER_DELETE
-#  define KINESIS_LAYOUT
-#endif
-
 xkb_keymap {
 xkb_keycodes "evdev+aliases(qwerty)" {
     minimum = 8;
@@ -119,6 +110,7 @@ xkb_keycodes "evdev+aliases(qwerty)" {
     <LWIN> = 133;
     <RWIN> = 134;
     <COMP> = 135;
+    <I180> = 180;
     <MDSW> = 203;
      <ALT> = 204;
     <META> = 205;
@@ -681,29 +673,6 @@ xkb_compatibility "complete" {
     interpret ISO_Last_Group+AnyOfOrNone(all) {
         action= LockGroup(group=2);
     };
-
-    interpret Pointer_Left {
-        repeat= True;
-        action= MovePtr(x=-100,y=+0);
-    };
-    interpret Pointer_Left+AllOf(Control) {
-        repeat= True;
-        action= MovePtr(x=-10,y=+0);
-    };
-
-    interpret Pointer_Right {
-        repeat= True;
-        action= MovePtr(x=+100,y=+0);
-    };
-    interpret Pointer_Up {
-        repeat= True;
-        action= MovePtr(x=+0,y=-100);
-    };
-    interpret Pointer_Down {
-        repeat= True;
-        action= MovePtr(x=+0,y=+100);
-    };
-
     interpret KP_1+AnyOfOrNone(all) {
         repeat= True;
         action= MovePtr(x=-1,y=+1);
@@ -718,7 +687,7 @@ xkb_compatibility "complete" {
     };
     interpret KP_Down+AnyOfOrNone(all) {
         repeat= True;
-        action= MovePtr(x=+0,y=+1);
+        action= MovePtr(x=+0,y=+10);
     };
     interpret KP_3+AnyOfOrNone(all) {
         repeat= True;
@@ -734,7 +703,7 @@ xkb_compatibility "complete" {
     };
     interpret KP_Left+AnyOfOrNone(all) {
         repeat= True;
-        action= MovePtr(x=-1,y=+0);
+        action= MovePtr(x=-10,y=+0);
     };
     interpret KP_6+AnyOfOrNone(all) {
         repeat= True;
@@ -742,7 +711,7 @@ xkb_compatibility "complete" {
     };
     interpret KP_Right+AnyOfOrNone(all) {
         repeat= True;
-        action= MovePtr(x=+1,y=+0);
+        action= MovePtr(x=+10,y=+0);
     };
     interpret KP_7+AnyOfOrNone(all) {
         repeat= True;
@@ -758,7 +727,7 @@ xkb_compatibility "complete" {
     };
     interpret KP_Up+AnyOfOrNone(all) {
         repeat= True;
-        action= MovePtr(x=+0,y=-1);
+        action= MovePtr(x=+0,y=-10);
     };
     interpret KP_9+AnyOfOrNone(all) {
         repeat= True;
@@ -855,7 +824,6 @@ xkb_compatibility "complete" {
     interpret Pointer_Button_Dflt+AnyOfOrNone(all) {
         action= PtrBtn(button=default);
     };
-
     interpret Pointer_Button1+AnyOfOrNone(all) {
         action= PtrBtn(button=1);
     };
@@ -865,19 +833,12 @@ xkb_compatibility "complete" {
     interpret Pointer_Button3+AnyOfOrNone(all) {
         action= PtrBtn(button=3);
     };
-    interpret Pointer_Button4 {
-        repeat= True;
+    interpret Pointer_Button4+AnyOfOrNone(all) {
         action= PtrBtn(button=4);
     };
-    interpret Pointer_Button4+AnyOf(Shift) {
-        repeat= True;
-        action= PtrBtn(button=4,count=2);
-    };
     interpret Pointer_Button5+AnyOfOrNone(all) {
-        repeat= True;
         action= PtrBtn(button=5);
     };
-
     interpret Pointer_DblClick_Dflt+AnyOfOrNone(all) {
         action= PtrBtn(button=default,count=2);
     };
@@ -1059,13 +1020,6 @@ xkb_compatibility "complete" {
     interpret Any+AnyOf(all) {
         action= SetMods(modifiers=modMapMods,clearLocks);
     };
-
-    // interpret Level3_and_Mouse {
-        // virtualModifier= LevelThree;
-        // useModMapMods=level1;
-        // action= SetMods(modifiers=LevelThree,clearLocks) + SetControls(countrols=MouseKeys)
-    // };
-
     group 2 = AltGr;
     group 3 = AltGr;
     group 4 = AltGr;
@@ -1098,9 +1052,9 @@ xkb_compatibility "complete" {
     };
 };
 
-xkb_symbols "custom(dvorak-kmm)" {
+xkb_symbols "pc+custom(dvorak-kmm)" {
 
-    name[group1]="Dvorak/Kinesis/Mirrormap";
+    name[group1]="English (Dvorak)";
 
     key  <ESC> {         [          Escape ] };
     key <AE01> {
@@ -1113,7 +1067,7 @@ xkb_symbols "custom(dvorak-kmm)" {
     };
     key <AE03> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [               3,        sterling,               8,        asterisk ]
+        symbols[Group1]= [               3,      numbersign,               8,        asterisk ]
     };
     key <AE04> {
         type= "FOUR_LEVEL",
@@ -1125,34 +1079,37 @@ xkb_symbols "custom(dvorak-kmm)" {
     };
     key <AE06> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [               6,     asciicircum, dead_circumflex, dead_circumflex ]
+        symbols[Group1]= [               6,     asciicircum,         onehalf, dead_circumflex ]
     };
-    key <AE07> {         [               7,       ampersand ] };
-    key <AE08> {         [               8,        asterisk ] };
+    key <AE07> {
+        type= "FOUR_LEVEL",
+        symbols[Group1]= [               7,       ampersand,   threequarters,        NoSymbol ]
+    };
+    key <AE08> {
+        type= "FOUR_LEVEL",
+        symbols[Group1]= [               8,        asterisk,        multiply,        multiply ]
+    };
     key <AE09> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [               9,            less,      dead_grave,        NoSymbol ]
+        symbols[Group1]= [               9,            less, leftsinglequotemark,      dead_breve ]
     };
-    key <AE10> {         [               0,         greater ] };
-#ifndef KINESIS_LAYOUT
-    key <AE11> { [ bracketleft, braceleft ] };
-    key <AE12> { [ bracketright, braceright ] };
-#else
-    key <AE11> { [ numbersign, asciitilde ] };
+    key <AE10> {
+        type= "FOUR_LEVEL",
+        symbols[Group1]= [               0,         greater, rightsinglequotemark,  dead_abovering ]
+    };
+    key <AE11> {         [     bracketleft,       braceleft ] };
     key <AE12> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [ equal, plus, numbersign, asciitilde ]
+        symbols[Group1]= [    bracketright,      braceright,      dead_tilde,        NoSymbol ]
     };
-#endif
     key <BKSP> {
         type= "FOUR_LEVEL",
-#ifndef SWAP_ENTER_DELETE
-        symbols[Group1]= [ BackSpace, BackSpace, space, space ]
-#else
-        symbols[Group1]= [ space, space, BackSpace, BackSpace ]
-#endif
+        symbols[Group1]= [           space,           space,       BackSpace,       BackSpace ]
     };
-    key  <TAB> {         [             Tab,    ISO_Left_Tab ] };
+    key  <TAB> {
+        type= "FOUR_LEVEL",
+        symbols[Group1] = [ Tab, ISO_Left_Tab, slash, question ]
+    };
     key <AD01> {
         type= "FOUR_LEVEL",
         symbols[Group1]= [      apostrophe,        quotedbl,               l,               L ]
@@ -1193,34 +1150,31 @@ xkb_symbols "custom(dvorak-kmm)" {
         type= "ALPHABETIC",
         symbols[Group1]= [               l,               L ]
     };
-#ifndef KINESIS_LAYOUT
-    key <AD11> { [ slash, question ] };
-    key <AD12> { [ equal, plus ] };
-#else
-    key <AD11> { [ bracketleft,  braceleft ] };
-    key <AD12> { [ bracketright, braceright ] };
-#endif
-#ifndef SWAP_ENTER_DELETE
-    key <RTRN> { [ Return, Return ] };
-#else
-    key <RTRN> { [ Delete, Delete ] };
-#endif
-    key <LCTL> { [ Control_L ] };
+    key <AD11> {
+        type= "FOUR_LEVEL",
+        symbols[Group1]= [           slash,        question,        division,    questiondown ]
+    };
+    key <AD12> {
+        type= "FOUR_LEVEL",
+        symbols[Group1]= [           equal,            plus,       plusminus,        notequal ]
+    };
+    key <RTRN> {         [          Delete ] };
+    key <LCTL> {         [       Control_L ] };
     key <AC01> {
         type= "FOUR_LEVEL_ALPHABETIC",
-        symbols[Group1]= [ a, A, s, S ]
+        symbols[Group1]= [               a,               A,               s,               S ]
     };
     key <AC02> {
         type= "FOUR_LEVEL_ALPHABETIC",
-        symbols[Group1]= [ o, O, n, N ]
+        symbols[Group1]= [               o,               O,               n,               N ]
     };
     key <AC03> {
         type= "FOUR_LEVEL_ALPHABETIC",
-        symbols[Group1]= [ e, E, t, T ]
+        symbols[Group1]= [               e,               E,               t,               T ]
     };
     key <AC04> {
         type= "FOUR_LEVEL_ALPHABETIC",
-        symbols[Group1]= [ u, U, h, H ]
+        symbols[Group1]= [               u,               U,               h,               H ]
     };
     key <AC05> {
         type= "FOUR_LEVEL_ALPHABETIC",
@@ -1231,32 +1185,34 @@ xkb_symbols "custom(dvorak-kmm)" {
         symbols[Group1]= [ d, D, Pointer_Button5, Pointer_Button5 ]
     };
     key <AC07> {
-        type= "THREE_LEVEL",
-        symbols[Group1]= [ h, H, Pointer_Left ]
+        type= "FOUR_LEVEL_SEMIALPHABETIC",
+        symbols[Group1]= [ h, H, KP_Left, KP_Left ]
     };
     key <AC08> {
         type= "FOUR_LEVEL_SEMIALPHABETIC",
-        symbols[Group1]= [ t, T, Pointer_Down, Pointer_Down ]
+        symbols[Group1]= [ t, T, KP_Down, KP_Down ]
     };
     key <AC09> {
         type= "FOUR_LEVEL_SEMIALPHABETIC",
-        symbols[Group1]= [ n, N, Pointer_Up, Pointer_Up ]
+        symbols[Group1]= [ n, N, KP_Up, KP_Up ]
     };
     key <AC10> {
         type= "FOUR_LEVEL_SEMIALPHABETIC",
-        symbols[Group1]= [ s, S, Pointer_Right, Pointer_Right ]
+        symbols[Group1]= [ s, S, KP_Right, KP_Right ]
     };
-    key <AC11> { [ minus, underscore ] };
+    key <AC11> {
+        type= "FOUR_LEVEL",
+        symbols[Group1]= [           minus,      underscore,          endash,          emdash ]
+    };
     key <TLDE> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [ grave, notsign, bracketright, braceright ]
+        symbols[Group1]= [           grave,      asciitilde,      dead_grave,      dead_tilde ]
     };
-    key <LFSH> { [ Shift_L ] };
-#ifndef KINESIS_LAYOUT
-    key <BKSL> { [ numbersign, asciitilde ] };
-#else
-    key <BKSL> { [ slash, question ] };
-#endif
+    key <LFSH> {         [         Shift_L ] };
+    key <BKSL> {
+        type= "FOUR_LEVEL",
+        symbols[Group1]= [       backslash,             bar,       brokenbar,        NoSymbol ]
+    };
     key <AB01> {
         type= "FOUR_LEVEL",
         symbols[Group1]= [       semicolon,           colon,               z,               Z ]
@@ -1282,8 +1238,8 @@ xkb_symbols "custom(dvorak-kmm)" {
         symbols[Group1]= [               b,               B ]
     };
     key <AB07> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               m,               M ]
+        type= "FOUR_LEVEL_SEMIALPHABETIC",
+        symbols[Group1]= [               m,               M,              mu,       masculine ]
     };
     key <AB08> {
         type= "ALPHABETIC",
@@ -1303,11 +1259,7 @@ xkb_symbols "custom(dvorak-kmm)" {
         symbols[Group1]= [     KP_Multiply,     KP_Multiply,     KP_Multiply,     KP_Multiply,   XF86ClearGrab ]
     };
     key <LALT> {         [           Alt_L,          Meta_L ] };
-#ifndef SWAP_ENTER_DELETE
-    key <SPCE> {         [ space, space ] };
-#else
-    key <SPCE> {         [ BackSpace, BackSpace ] };
-#endif
+    key <SPCE> {         [       BackSpace ] };
     key <CAPS> {
         type= "ONE_LEVEL",
         symbols[Group1]= [ ISO_Level3_Shift ]
@@ -1353,7 +1305,7 @@ xkb_symbols "custom(dvorak-kmm)" {
         symbols[Group1]= [             F10,             F10,             F10,             F10, XF86Switch_VT_10 ]
     };
     key <NMLK> {         [        Num_Lock ] };
-    key <SCLK> {         [     Pointer_EnableKeys ] };
+    key <SCLK> {         [     Scroll_Lock ] };
     key  <KP7> {         [         KP_Home,            KP_7 ] };
     key  <KP8> {         [           KP_Up,            KP_8 ] };
     key  <KP9> {         [        KP_Prior,            KP_9 ] };
@@ -1376,7 +1328,7 @@ xkb_symbols "custom(dvorak-kmm)" {
     key <LVL3> {         [ ISO_Level3_Shift ] };
     key <LSGT> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [       backslash,             bar,     bracketleft,       braceleft ]
+        symbols[Group1]= [       backslash,             bar,       brokenbar,       brokenbar ]
     };
     key <FK11> {
         type= "CTRL+ALT",
@@ -1403,25 +1355,15 @@ xkb_symbols "custom(dvorak-kmm)" {
     key <HOME> {         [            Home ] };
     key   <UP> {         [              Up ] };
     key <PGUP> {         [           Prior ] };
-    key <LEFT> {
-        type= "FOUR_LEVEL",
-        symbols[Group1]= [            Left,            Left,            Down,            Down ]
-    };
-    key <RGHT> {
-        type= "FOUR_LEVEL",
-        symbols[Group1]= [           Right,           Right,              Up,              Up ]
-    };
+    key <LEFT> {         [            Left ] };
+    key <RGHT> {         [           Right ] };
     key  <END> {         [             End ] };
     key <DOWN> {         [            Down ] };
     key <PGDN> {         [            Next ] };
     key  <INS> {         [          Insert ] };
     key <DELE> {
         type= "FOUR_LEVEL",
-#ifndef SWAP_ENTER_DELETE
-        symbols[Group1]= [ Delete, Delete, Return, Return ]
-#else
-        symbols[Group1]= [ Return, Return, Delete, Delete ]
-#endif
+        symbols[Group1]= [          Return,          Return,          Delete,          Delete ]
     };
     key <KPEQ> {         [        KP_Equal ] };
     key <PAUS> {
@@ -1429,9 +1371,10 @@ xkb_symbols "custom(dvorak-kmm)" {
         symbols[Group1]= [           Pause,           Break ]
     };
     key <I129> {         [      KP_Decimal,      KP_Decimal ] };
-    key <LWIN> {         [         Super_L ] };
+    key <LWIN> {         [              at ] };
     key <RWIN> {         [         Super_R ] };
     key <COMP> {         [            Menu ] };
+    key <I180> {         [       XF86Paste ] };
     key <MDSW> {         [     Mode_switch ] };
     key  <ALT> {         [        NoSymbol,           Alt_L ] };
     key <META> {         [        NoSymbol,          Meta_L ] };
@@ -1445,7 +1388,6 @@ xkb_symbols "custom(dvorak-kmm)" {
     modifier_map Mod5 { <LVL3> };
     modifier_map Control { <RCTL> };
     modifier_map Mod1 { <RALT> };
-    modifier_map Mod4 { <LWIN> };
     modifier_map Mod4 { <RWIN> };
     modifier_map Mod5 { <MDSW> };
     modifier_map Mod1 { <META> };

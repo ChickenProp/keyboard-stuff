@@ -1113,7 +1113,7 @@ xkb_symbols "custom(dvorak-kmm)" {
     };
     key <AE03> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [               3,        sterling,               8,        asterisk ]
+        symbols[Group1]= [               3,      numbersign,               8,        asterisk ]
     };
     key <AE04> {
         type= "FOUR_LEVEL",
@@ -1249,11 +1249,11 @@ xkb_symbols "custom(dvorak-kmm)" {
     key <AC11> { [ minus, underscore ] };
     key <TLDE> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [ grave, notsign, bracketright, braceright ]
+        symbols[Group1]= [ grave, asciitilde, bracketright, braceright ]
     };
     key <LFSH> { [ Shift_L ] };
 #ifndef KINESIS_LAYOUT
-    key <BKSL> { [ numbersign, asciitilde ] };
+    key <BKSL> { [ backslash, bar ] };
 #else
     key <BKSL> { [ slash, question ] };
 #endif

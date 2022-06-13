@@ -149,7 +149,10 @@ include "%L"
 <Multi_key> <slash> <equal>		: "≠"	U2260		# NOT EQUAL TO
 <Multi_key> <less> <equal>		: "≤"	U2264		# LESS-THAN OR EQUAL TO
 <Multi_key> <greater> <equal>		: "≥"	U2265		# GREATER-THAN OR EQUAL TO
+<Multi_key> <less> <greater>		: "≶"	U2276		# LESS-THAN OR GREATER-THAN
+<Multi_key> <greater> <less>		: "≷"	U2277		# GREATER-THAN OR LESS-THAN
 <Multi_key> <exclam> <less> <greater>   : "≸"	U2278		# NEITHER LESS-THAN NOR GREATER-THAN
+<Multi_key> <exclam> <greater> <less>   : "≹"	U2279		# NEITHER GREATER-THAN NOR LESS-THAN
 # MUCH is usually enough for me.  No need for VERY.
 <Multi_key> <plus> <less>        	: "≪"	U226A		# MUCH LESS-THAN
 <Multi_key> <plus> <greater> 		: "≫"	U226B		# MUCH GREATER-THAN
@@ -247,14 +250,37 @@ include "%L"
 <Multi_key> <I> <m>		: "ℑ"	 U2111		# BLACK-LETTER CAPTIAL I (Imaginary Part)
 # Would we prefer 20D1 COMBINING RIGHT HARPOON ABOVE?
 <Multi_key> <asciicircum> <greater>     : "⃗"   U20D7           # COMBINING RIGHT ARROW ABOVE (vector)
-# There's a whole passel of these guys starting at U+1D538 but I have no fonts for those.
-<Multi_key> <bar> <C>                   : "ℂ"   U2102           # DOUBLE-STRUCK CAPITAL C (set of complex numbers)
-<Multi_key> <bar> <N>                   : "ℕ"   U2115           # DOUBLE-STRUCK CAPITAL N (natural number)
-<Multi_key> <bar> <P>                   : "ℙ"   U2119           # DOUBLE-STRUCK CAPITAL P 
-<Multi_key> <bar> <Q>                   : "ℚ"   U211A           # DOUBLE-STRUCK CAPITAL Q (set of rational numbers)
-<Multi_key> <bar> <R>                   : "ℝ"   U211D           # DOUBLE-STRUCK CAPITAL R (set of real numbers)
-<Multi_key> <bar> <Z>                   : "ℤ"   U2124           # DOUBLE-STRUCK CAPITAL Z (set of integers)
-<Multi_key> <bar> <H>		: "ℍ" U210d	# DOUBLE-STRUCK CAPITAL H
+
+# There's a symbol for every upper-case letter, every lower-case letter, a few
+# italic variants (D, d, e, i, j), every decimal digit and some greek (Γ, γ, Π,
+# π, Σ). Currently only repping all the upper-cases.
+<Multi_key> <bar> <A> : "𝔸" U1D538 # DOUBLE-STRUCK CAPITAL A
+<Multi_key> <bar> <B> : "𝔹" U1D539 # DOUBLE-STRUCK CAPITAL B
+<Multi_key> <bar> <C> : "ℂ" U2102 # DOUBLE-STRUCK CAPITAL C
+<Multi_key> <bar> <D> : "𝔻" U1D53B # DOUBLE-STRUCK CAPITAL D
+<Multi_key> <bar> <E> : "𝔼" U1D53C # DOUBLE-STRUCK CAPITAL E
+<Multi_key> <bar> <F> : "𝔽" U1D53D # DOUBLE-STRUCK CAPITAL F
+<Multi_key> <bar> <G> : "𝔾" U1D53E # DOUBLE-STRUCK CAPITAL G
+<Multi_key> <bar> <H> : "ℍ" U210D # DOUBLE-STRUCK CAPITAL H
+<Multi_key> <bar> <I> : "𝕀" U1D540 # DOUBLE-STRUCK CAPITAL I
+<Multi_key> <bar> <J> : "𝕁" U1D541 # DOUBLE-STRUCK CAPITAL J
+<Multi_key> <bar> <K> : "𝕂" U1D542 # DOUBLE-STRUCK CAPITAL K
+<Multi_key> <bar> <L> : "𝕃" U1D543 # DOUBLE-STRUCK CAPITAL L
+<Multi_key> <bar> <M> : "𝕄" U1D544 # DOUBLE-STRUCK CAPITAL M
+<Multi_key> <bar> <N> : "ℕ" U2115 # DOUBLE-STRUCK CAPITAL N
+<Multi_key> <bar> <O> : "𝕆" U1D546 # DOUBLE-STRUCK CAPITAL O
+<Multi_key> <bar> <P> : "ℙ" U2119 # DOUBLE-STRUCK CAPITAL P
+<Multi_key> <bar> <Q> : "ℚ" U211A # DOUBLE-STRUCK CAPITAL Q
+<Multi_key> <bar> <R> : "ℝ" U211D # DOUBLE-STRUCK CAPITAL R
+<Multi_key> <bar> <S> : "𝕊" U1D54A # DOUBLE-STRUCK CAPITAL S
+<Multi_key> <bar> <T> : "𝕋" U1D54B # DOUBLE-STRUCK CAPITAL T
+<Multi_key> <bar> <U> : "𝕌" U1D54C # DOUBLE-STRUCK CAPITAL U
+<Multi_key> <bar> <V> : "𝕍" U1D54D # DOUBLE-STRUCK CAPITAL V
+<Multi_key> <bar> <W> : "𝕎" U1D54E # DOUBLE-STRUCK CAPITAL W
+<Multi_key> <bar> <X> : "𝕏" U1D54F # DOUBLE-STRUCK CAPITAL X
+<Multi_key> <bar> <Y> : "𝕐" U1D550 # DOUBLE-STRUCK CAPITAL Y
+<Multi_key> <bar> <Z> : "ℤ" U2124 # DOUBLE-STRUCK CAPITAL Z
+
 <Multi_key> <bar> <e>		: "ⅇ" U2147	# DOUBLE-STRUCK ITALIC SMALL E
 <Multi_key> <bar> <i>		: "ⅈ" U2148	# DOUBLE-STRUCK ITALIC SMALL I
 <Multi_key> <bar> <j>		: "ⅉ" U2149	# DOUBLE-STRUCK ITALIC SMALL J
@@ -264,6 +290,7 @@ include "%L"
 <Multi_key> <bar> <Greek_PI> 	 : "ℿ" U213C	# DOUBLE-STRUCK CAPITAL PI
 <Multi_key> <bar> <asterisk> <S> : "⅀" U2140	# DOUBLE-STRUCK N-ARY SUMMATION
 <Multi_key> <bar> <Greek_SIGMA>  : "⅀" U2140	# DOUBLE-STRUCK N-ARY SUMMATION
+
 # The *look* double-struck.
 <Multi_key> <bar> <braceleft>	 : "⦃" U2983	# LEFT WHITE CURLY BRACKET
 <Multi_key> <bar> <braceright>	 : "⦄" U2984	# RIGHT WHITE CURLY BRACKET 
@@ -488,10 +515,11 @@ include "%L"
 <Multi_key> <exclam> <ampersand> <exclam>	  : "‼"	 U203C	# DOUBLE EXCLAMATION MARK
 # Keep looking into big hunks of Latin Extended-D, A720- et seq.
 <Multi_key> <less> <3>                  : "♥"  U2665            # BLACK HEART SUIT
-<Multi_key> <3> <3>			: "♣" U2663		# BLACK CLUB SUIT
-<Multi_key> <less> <greater>		: "♢" U2662		# WHITE DIAMOND SUIT
-<Multi_key> <3> <minus>		: "♠" U2660		# BLACK SPADE SUIT
-<Multi_key> <E> <greater>		: "♡" U2661		# WHITE HEART SUIT
+# I'm never going to need/remember these, and I want <> for less-than or greater-than
+# <Multi_key> <3> <3>			: "♣" U2663		# BLACK CLUB SUIT
+# <Multi_key> <less> <greater>		: "♢" U2662		# WHITE DIAMOND SUIT
+# <Multi_key> <3> <minus>		: "♠" U2660		# BLACK SPADE SUIT
+# <Multi_key> <E> <greater>		: "♡" U2661		# WHITE HEART SUIT
 # "shamrock" is too long; there IS a limit to these!
 <Multi_key> <ampersand> <s> <h> <m> <r> <c> <k>		: "☘" U2618   # SHAMROCK
 <Multi_key> <ampersand> <p> <c>         : "☮"   U262E           # PEACE SYMBOL
